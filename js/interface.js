@@ -182,9 +182,9 @@ function toggleEnteredDropdown() {
     let elem = document.createElement("span");
     elem.classList.add("entered-word-number");
     elem.textContent =
-      "You have found " +
+      "Encontrache " +
       window.game.entered.length +
-      (window.game.entered.length == 1 ? " word" : " words");
+      (window.game.entered.length == 1 ? " palabra" : " palabras");
     entered_words.insertBefore(elem, entered_words.firstChild);
   } else {
     chevron.classList.remove("entered-toggle-expanded");
@@ -427,20 +427,20 @@ function enterWord() {
 
   // Check if word is too short.
   if (entered.length < 4) {
-    showMessage("Too short", 0);
+    showMessage("Poucas letras", 0);
     return;
   }
 
   // Check if required letter is present.
   if (!entered.toUpperCase().includes(required_letter)) {
-    showMessage("Missing center letter", 0);
+    showMessage("Falta a letra do centro", 0);
     return;
   }
 
   // Check if invalid letters are present.
   for (letter of entered.toUpperCase()) {
     if (!window.game.pangram.toUpperCase().includes(letter.toUpperCase())) {
-      showMessage("Bad letters", 0);
+      showMessage("Malas letras", 0);
       return;
     }
   }
@@ -451,19 +451,19 @@ function enterWord() {
       .map((x) => x.toUpperCase())
       .includes(entered.toUpperCase())
   ) {
-    showMessage("Not in word list", 0);
+    showMessage("A palabra no ta no diccionario", 0);
     return;
   }
 
   // Check if already entered.
   if (window.game.entered.includes(entered.toUpperCase())) {
-    showMessage("Already found", 0);
+    showMessage("Xa atopada", 0);
     return;
   }
 
   entered_score = getScore(entered);
   if (hmm() && entered.toLowerCase() == "calixto") {
-    showMessage("Happy birthday!", 2);
+    showMessage("--------", 2);
   } else {
     showMessage("+" + entered_score, isPangram(entered) ? 2 : 1);
   }
@@ -620,7 +620,7 @@ function setUpPrevPopup() {
     if (prev_entered.has(word.toUpperCase())) {
       elem.classList.add("bolded");
     }
-    elem.href = "https://www.merriam-webster.com/dictionary/" + word;
+    elem.href = "https://axuntar.wordpress.com/" + word;
     elem.target = "_blank";
     elem.textContent = capitalizeInitial(word);
     prev_words_container.appendChild(elem);
@@ -753,11 +753,11 @@ function hideAllPopup() {
 function toggleDarkMode() {
   if (document.body.classList.contains("dark")) {
     document.body.classList.remove("dark");
-    element("toggle-dark").textContent = "dark";
+    element("toggle-dark").textContent = "noite";
     setDarkCookie();
   } else {
     document.body.classList.add("dark");
-    element("toggle-dark").textContent = "light";
+    element("toggle-dark").textContent = "dia";
     setDarkCookie();
   }
 }
@@ -766,11 +766,11 @@ function toggleDarkMode() {
 function switchDarkMode(param) {
   if (param == "light") {
     document.body.classList.remove("dark");
-    element("toggle-dark").textContent = "dark";
+    element("toggle-dark").textContent = "noite";
     setDarkCookie();
   } else if (param == "dark") {
     document.body.classList.add("dark");
-    element("toggle-dark").textContent = "light";
+    element("toggle-dark").textContent = "dia";
     setDarkCookie();
   }
 }
