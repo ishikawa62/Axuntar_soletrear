@@ -602,9 +602,9 @@ function setUpPrevPopup() {
   // Set up found words and points, if present.
   if (prev_entered_array.length > 0) {
     element("prev-stats-words-found").textContent =
-      prev_entered_array.length + " dee ";
+      prev_entered_array.length + " de ";
     element("prev-stats-points-found").textContent =
-      getArrayScore(prev_entered_array) + " dee ";
+      getArrayScore(prev_entered_array) + " de ";
   }
 
   // Show words.
