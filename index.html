@@ -183,7 +183,7 @@ draft: false
 
   <div id="prev-popup" class="popup hidden">
     <div class="popup-content">
-      <div class="popup-heading">Yesterday's answers</div>
+      <div class="popup-heading">Xogo anterior</div>
       <div class="popup-content-text">
         <div id="prev-letters-container"></div>
         <div id="prev-stats">
@@ -191,26 +191,26 @@ draft: false
             id="prev-stats-points-found"></span><span id="prev-stats-points"></span>&nbsp;points</div>
         <div id="prev-words-container"></div>
       </div>
+      
       <p class="popup-content-text">
-        The highlighted letter indicates the required letter. Highlighted words indicate pangrams. <span
-          id="popup-content-text-entered" class="hidden">Bolded words indicate the words you found.</span>
+        A letra amarela e a requerida. 
+        As palabras resaltadas amarelas son os pangramas. <span
+          id="popup-content-text-entered" class="hidden">As palabras en negrita son as que tu atopache.</span>
       </p>
-      <p class="popup-content-text">
-        Click on the words to see their definitions in Merriam-Webster.
-      </p>
+      
     </div>
     <span id="popup-exit" onclick="hidePrevPopup()"></span>
   </div>
 
   <div id="reset-popup" class="popup hidden">
     <div id="popup-content-alt">
-      <h1>Reset</h1>
-      <p id="reset-text">Are you sure you want to clear your progress?</p>
+      <h1>Limpiar</h1>
+      <p id="reset-text">Tas seguro de que ques empezar de novo este xogo</p>
       <button id="button-no-reset" type="button" class="reset-button" onclick="hideResetPopup()">
-        No thanks
+        No
       </button>
       <button id="button-reset" type="button" class="reset-button reset-button-action" onclick="resetGame()">
-        Reset
+        Dalle
       </button>
     </div>
     <span id="popup-exit-alt" onclick="hideResetPopup()"></span>
@@ -218,11 +218,11 @@ draft: false
 
   <div id="return-popup" class="popup hidden">
     <div id="popup-content-alt">
-      <h1 class="return-popup-header">Welcome back!</h1>
-      <p id="return-text">You've achieved the rank of&nbsp;<b id="return-rank"></b>&nbsp;by finding&nbsp;<b
-          id="return-words"></b>&nbsp;for
+      <h1 class="return-popup-header">Benvido de volta!</h1>
+      <p id="return-text">Hasta agora &nbsp;<b id="return-rank"></b>&nbsp;porque atopache&nbsp;<b
+          id="return-words"></b>&nbsp;y teis
         <b id="return-points"></b>.</p>
-      <p id="return-countdown">How far can you get in the next&nbsp;<b id="return-countdown-span">day</b>?</p>
+      <p id="return-countdown">¿Contas más podes atopar? Faltan &nbsp;<b id="return-countdown-span">day</b>pa el novo xogo</p>
     </div>
     <span id="popup-exit-alt" onclick="hideReturnPopup()"></span>
   </div>
