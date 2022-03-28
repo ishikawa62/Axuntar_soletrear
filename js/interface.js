@@ -462,7 +462,7 @@ function enterWord() {
   }
 
   entered_score = getScore(entered);
-  if (hmm() && entered.toLowerCase() == "calixto") {
+  if (hmm() && entered.toLowerCase() == "Riopedre") {
     showMessage("--------", 2);
   } else {
     showMessage("+" + entered_score, isPangram(entered) ? 2 : 1);
@@ -602,9 +602,9 @@ function setUpPrevPopup() {
   // Set up found words and points, if present.
   if (prev_entered_array.length > 0) {
     element("prev-stats-words-found").textContent =
-      prev_entered_array.length + " of ";
+      prev_entered_array.length + " de ";
     element("prev-stats-points-found").textContent =
-      getArrayScore(prev_entered_array) + " of ";
+      getArrayScore(prev_entered_array) + " de ";
   }
 
   // Show words.
