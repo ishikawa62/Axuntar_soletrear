@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap");
 
 body {
-  /* Disables pull-to-refresh but allows overscroll glow effects. */
+  /* Deshabilita la opción de actualización, pero permite efectos de brillo de desplazamiento excesivo. */
   overscroll-behavior-y: contain;
   margin: 0px 8px;
   --color-highlight: #f8cd05;

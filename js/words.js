@@ -1,8 +1,8 @@
-// Word and word array manipulation functions.
-// Constants:
-PANGRAM_SIZE = 7; // number of unique letters for a pangram.
+// Funciones de manipulación de matrices de las palabras.
+// Constantes:
+PANGRAM_SIZE = 7; // número de letras únicas para un pangrama.
 
-// Debug function because I'm dumb
+// Comprobacion por si estoy tonto
 function print(val) {
   console.log(val);
 }
@@ -10,7 +10,7 @@ function print(val) {
 // hmm
 function hmm() { return (new Date().getDate() == 25 && new Date().getMonth() == 9); }
 
-// Shuffle an array and return it.
+// Carga la matriz y la devuélve.
 function shuffleArray(arr, seed = 0) {
   let rng = new alea(seed);
   for (let i = arr.length - 1; i > 0; i--) {
@@ -22,8 +22,8 @@ function shuffleArray(arr, seed = 0) {
   return arr;
 }
 
-// Given an integer N and a seed, shuffle (pseudorandomly) an array with the numbers 0
-// through N-1.
+// Desde el número entero N, mezclar (pseudoaleatoriamente) la matriz con los números 0
+// hasta N-1.
 function getShuffledNumberArray(n, seed = 0) {
   return shuffleArray(
     Array(n)
@@ -32,7 +32,7 @@ function getShuffledNumberArray(n, seed = 0) {
   );
 }
 
-// Get a target pangram, given data and an optional day offset.
+// pangrama de destino en honor a calixto.
 function getTargetPangram(data, offset = 0) {
   // hmm
   if (hmm() && offset == 0) {
@@ -50,8 +50,8 @@ function getTargetPangram(data, offset = 0) {
     return num_uppercase;
   }
 
-  // Pick a random valid pangram. Guaranteed to be a (seeded) pseudorandom choice that
-  // cycles through all possible choices every [# num_choices] days.
+  // Elige un pangrama válido al azar. Garantizado que sea pseudoaleatorio que
+  // recorre todas las opciones posibles cada [# num_choices] días.
   valid_pangrams = getAllValidPangrams(data);
   num_choices = valid_pangrams.reduce((acc, elem) => {
     return acc + countUpperCase(elem);
@@ -59,7 +59,7 @@ function getTargetPangram(data, offset = 0) {
   choice_arr = getShuffledNumberArray(num_choices);
   choice = choice_arr[getDayNumber(offset) % num_choices];
 
-  // Loop through all valid word/letter combinations to find the choice we obtained.
+  // Recorra todas las combinaciones válidas de palabras y letras para encontrar la opción que obtuvimos.
   counter = 0;
   for (word of valid_pangrams) {
     for (letter of word) {
@@ -74,12 +74,12 @@ function getTargetPangram(data, offset = 0) {
   }
 
   print("Pangram finding has gone out of bounds!");
-  return "Failure"; // fallback, should never happen. Incidentally a pangram.
+  return "Failure"; // etroceso, nunca debería suceder. Sin querer un pangrama. Habra que revisar el dic alguna vez.
 }
 
-// Given an array of words and some letters, return an array of all words in the array
-// that 1) can be made using solely those letters and 2) contain all capitalized
-// letters. Preserves casing.
+// Con la matriz precargada, devuelve una matriz de todas las palabras en la matriz
+// que 1) se puede hacer usando únicamente esas letras y 2) contiene todo en mayúsculas
+// letras. Ojala.
 function getWords(data, letters) {
   all_letters = new Set(letters.toLowerCase());
   required_letters = new Set(
@@ -119,15 +119,15 @@ function getWords(data, letters) {
   return all_words;
 }
 
-// Given an array of words and some letters, return an array of all pangrams in the
-// array that 1) can be made using solely those letters and 2) contain all capitalized
-// letters. Preserves casing.
+// Con la matriz precargada, devuelve una matriz de todas las palabras en la matriz
+// que 1) se puede hacer usando únicamente esas letras y 2) contiene todo en mayúsculas
+// letras. Está vez si.
 function getPangrams(data, letters) {
   words = getWords(data, letters);
   return getAllPangrams(words);
 }
 
-// Get all pangrams in a given array of words.
+// Leer todos los pangramas de la matriz cargada.
 function getAllPangrams(data) {
   return data.filter((word) => {
     word = word.toLowerCase();
@@ -135,8 +135,8 @@ function getAllPangrams(data) {
   });
 }
 
-// Get all valid pangrams (i.e, those that meet criteria for target pangrams) in a given
-// array of words.
+// Obtener todos los pangramas válidos (es decir, aquellos que cumplen con los criterios para los pangramas de destino) en un determinado
+// matriz de palabras.
 function getAllValidPangrams(data) {
   pangrams = getAllPangrams(data);
   return pangrams.filter((word) => {
@@ -144,12 +144,12 @@ function getAllValidPangrams(data) {
   });
 }
 
-// Check if word is a pangram.
+// Comprobar si la palabra es un pangrama.
 function isPangram(word) {
   return new Set(word.toUpperCase()).size == PANGRAM_SIZE;
 }
 
-// Score a given word.
+// Puntuación de la palabra.
 function getScore(word) {
   if (word.length == 4) {
     return 1;
@@ -162,13 +162,13 @@ function getScore(word) {
   }
 }
 
-// Score words in an array and return the sum.
+// Suma de la puntuación de las palabras en la matriz.
 function getArrayScore(words) {
   return words.reduce((acc, cur) => acc + getScore(cur), 0);
 }
 
-// Given data and a string, returns the total score of all words that 1) can be made
-// using the letters in the string, and 2) have all capitalized letters in the string.
+// Con los datos y el string, devuelve la puntuación total de todas las palabras que 1) se pueden formar
+// usando las letras en el string, y 2) tener todas las letras en mayúsculas en el string.
 function getTotalScore(data, letters) {
   words = getWords(data, letters);
   return total_score = words.reduce((acc, elem) => {
@@ -177,8 +177,8 @@ function getTotalScore(data, letters) {
   }, 0);
 }
 
-// Given a word and a letter, capitalize all instances of that letter in the word and
-// lowercase all other letters.
+// Con la palabra y la letra, escribir en mayúscula todas las instancias de esa letra en la palabra y
+// minúsculas todas las demás letras.
 function capitalizeLetter(word, letter) {
   return word.split("").reduce((acc, elem) => {
     if (elem.toLowerCase() == letter.toLowerCase()) {

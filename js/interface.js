@@ -1,4 +1,4 @@
-// Define variables for ranking.
+// Definir variables para la clasificación.
 let LEVEL_PERCENTS = [0.7, 0.55, 0.4, 0.25, 0.2, 0.15, 0.1, 0.05, 0];
 let LEVEL_NAMES = [
   "Xenial",
@@ -26,7 +26,7 @@ if (hmm()) {
   ];
 }
 
-// Get progress rank number, where 8 is lowest (Beginner) and 0 is highest (Genius).
+// Obtener el número de rango de progreso, donde 8 es el más bajo y 0 es el más alto.
 function getRankNumber(progress) {
   for (i of Array(LEVEL_PERCENTS.length)
   .fill()
@@ -37,7 +37,7 @@ function getRankNumber(progress) {
   }
 }
 
-// Get progress next text.
+// Obtener el siguiente texto de progreso.
 function getProgressNextText(progress) {
   let maximum = window.game.total_score;
   let rank = getRankNumber(progress);
@@ -51,7 +51,7 @@ function getProgressNextText(progress) {
   element("progress-next").textContent = next_text;
 }
 
-// Change progress bar progress.
+// Cambiar el progreso de la barra de progreso.
 function changeProgress(progress) {
   let maximum = window.game.total_score;
   getProgressNextText(progress);
@@ -76,7 +76,7 @@ function changeProgress(progress) {
         }
       }
 
-      // Trigger victory if we get to the highest rank.
+      // Activar victoria si llegamos al rango más alto.
       if (progress == maximum && window.game.show_all_popup) {
         showAllPopup();
         window.game.showVictoryPopup = false;
@@ -89,12 +89,12 @@ function changeProgress(progress) {
   }
 }
 
-// Capitalize initial letter for formatting.
+// Escribir en mayúscula la letra inicial para formatear.
 function capitalizeInitial(word) {
   return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 }
 
-// Enter word.
+// Introducir palabra.
 function addWordToEntered(word) {
   let entered_words = element("entered-words");
   if (window.game.entered.length == 0) {
@@ -114,9 +114,9 @@ function addWordToEntered(word) {
   setCookie();
 }
 
-// Populate entered word display from array.
+// Rellenar la pantalla de las palabras de la matriz.
 function populateEnteredWords(arr) {
-  // Reset words.
+  // Restablecer palabras.
   let entered_words = element("entered-words");
   entered_words.textContent = "";
   for (word of arr) {
@@ -131,15 +131,15 @@ function populateEnteredWords(arr) {
   }
 }
 
-// Populate entered word display from array, alphabetizing first.
+// Rellenar la pantalla de palabras ingresadas desde la matriz, ordenando alfabéticamente primero.
 function populateAlphabetizedWords(arr) {
-  let arr_copy = arr.slice(); // make copy to not modify original.
+  let arr_copy = arr.slice(); // Hacer copia para no modificar el original.
   arr_copy.sort();
-  arr_copy.reverse(); // in reverse order due to how words are entered.
+  arr_copy.reverse(); // en orden inverso debido a cómo se ingresan las palabras.
   populateEnteredWords(arr_copy);
 }
 
-// Load words from cookie, if cookie exists.
+// Cargue palabras de la cookie, si existe.
 function addWordsToEntered() {
   let cookie_entered = getCookie();
   if (cookie_entered !== null) {
@@ -153,7 +153,7 @@ function addWordsToEntered() {
   }
 }
 
-// Set up dropdown.
+// Configurar menú desplegable
 function setUpDropdown() {
   let entered_words = element("entered-words");
 
@@ -166,7 +166,7 @@ function setUpDropdown() {
   entered_words.onclick = toggleEnteredDropdown;
 }
 
-// Toggle entered dropdown.
+// Alternar entrada desplegable.
 function toggleEnteredDropdown() {
   let chevron = element("entered-toggle");
   let entered_words = element("entered-words");
@@ -199,8 +199,8 @@ function toggleEnteredDropdown() {
   }
 }
 
-// Show a message, of a certain type.
-// 0 = bad, 1 = good, 2 = pangram
+// Mostrar un mensaje, segun tipo.
+// 0 = malo, 1 = bueno, 2 = pangrama
 function showMessage(message, message_type) {
   container = element("message");
   container.textContent = message;
@@ -238,11 +238,11 @@ function showMessage(message, message_type) {
   }, 1200);
 }
 
-// Set up keyboard input function.
+// Configurar la función de entrada de teclado.
 function setUpKeyboardInput() {
   document.addEventListener("keydown", function (e) {
-    // Only input letters or recognize backspaces and enter keys.
-    // Don't recognize it when popups or dropdown are active.
+    // Solo ingresar letras o reconocer los espacios de retroceso y las teclas de entrada.
+    // No las reconoce cuando las ventanas emergentes o desplegables están activas.
     if (
       !window.game.popup_active &&
       !element("entered-toggle").classList.contains("entered-toggle-expanded")
@@ -267,7 +267,7 @@ function setUpKeyboardInput() {
   });
 }
 
-// Make a letter key blink.
+// Hacer que la letra parpadee.
 function simulateKeyPress(letter) {
   for (k of Array(6)
     .fill()
@@ -290,7 +290,7 @@ function simulateKeyPress(letter) {
   }
 }
 
-// Make a nav button blink.
+// Hacer que un botón de navegación parpadee.
 function simulateNavPress(button_name) {
   let pressed = element(button_name);
   pressed.style.animation = "nav-button-press 0.1s 1";
@@ -299,7 +299,7 @@ function simulateNavPress(button_name) {
   }, 100);
 }
 
-// Add letter to entry.
+// Agregar letra a la entrada.
 function addLetterEntry(letter) {
   let MAX_ENTRY_LETTERS = 17;
   let holder = element("entry-container-holder");
@@ -318,7 +318,7 @@ function addLetterEntry(letter) {
   rescaleLetterEntry();
 }
 
-// Remove letter from entry.
+// Eliminar letra de la entrada.
 function removeLetterEntry() {
   let current = element("entry-container-holder");
   if (current.childElementCount > 0) {
@@ -327,7 +327,7 @@ function removeLetterEntry() {
   rescaleLetterEntry();
 }
 
-// Rescale entry text width.
+// Cambiar la escala del ancho del texto de entrada.
 function rescaleLetterEntry() {
   const MAX_SIZE = 1.7;
   const STEP = 0.1;
@@ -344,7 +344,7 @@ function rescaleLetterEntry() {
   }
 }
 
-// Get word from entry by aggregating letters.
+// Obtener la palabra de la entrada agregando letras.
 function getWordEntry() {
   let combined = "";
   for (elem of element("entry-container-holder").children) {
@@ -353,17 +353,17 @@ function getWordEntry() {
   return combined;
 }
 
-// Clear letters from entry. Return the word that was there.
+// Borrar letras de la entrada. Devuelve la palabra que estaba allí.
 function clearEntry() {
   let word = getWordEntry();
-  element("entry-container-holder").textContent = ""; // clears children.
+  element("entry-container-holder").textContent = ""; // borra subyacentes.
   rescaleLetterEntry();
   return word;
 }
 
-// Set up on-screen keyboard. Takes the first capitalized letter of a provided iterable as the center. Takes a reset_middle flag which indicates whether the middle key should be cleared as well.
+// Configure el teclado en pantalla. 
 function setUpScreenKeys(letters, reset_middle) {
-  // Shuffle letters and make into set to fill letters.
+  // Mezclar las letras y conviértelas en un conjunto 
   letters = letters.split("");
   for (let i = letters.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * i);
@@ -387,7 +387,7 @@ function setUpScreenKeys(letters, reset_middle) {
   setTimeout(function () {
     let key_num = 1;
     for (letter_loop of letters) {
-      let letter = letter_loop; // declare in loop to allow closure.
+      let letter = letter_loop; // declarar un bucle para permitir el cierre.
       if (letter == letter.toUpperCase()) {
         if (reset_middle) {
           let km = element("keys-middle");
@@ -410,7 +410,7 @@ function setUpScreenKeys(letters, reset_middle) {
   }, 300);
 }
 
-// Shuffle screen keys.
+// Teclas de pantalla aleatorias.
 function shuffleScreenKeys() {
   setUpScreenKeys(window.game.pangram, false);
   element("button-shuffle").disabled = true;
@@ -420,24 +420,24 @@ function shuffleScreenKeys() {
   }, 500);
 }
 
-// Enter word.
+// Introducir la palabra.
 function enterWord() {
   let required_letter = element("keys-middle").textContent;
   let entered = clearEntry();
 
-  // Check if word is too short.
+  // Compruebar si la palabra es demasiado corta.
   if (entered.length < 4) {
     showMessage("Poucas letras", 0);
     return;
   }
 
-  // Check if required letter is present.
+  // Verificar si la letra del medio está presente.
   if (!entered.toUpperCase().includes(required_letter)) {
     showMessage("Falta a letra do centro", 0);
     return;
   }
 
-  // Check if invalid letters are present.
+  // Compruebar si hay letras no válidas.
   for (letter of entered.toUpperCase()) {
     if (!window.game.pangram.toUpperCase().includes(letter.toUpperCase())) {
       showMessage("Malas letras", 0);
@@ -445,7 +445,7 @@ function enterWord() {
     }
   }
 
-  // Check if it is a valid word.
+  // Compruebar si es una palabra válida.
   if (
     !window.game.words
       .map((x) => x.toUpperCase())
@@ -455,7 +455,7 @@ function enterWord() {
     return;
   }
 
-  // Check if already entered.
+  // Comprobar si está repetida.
   if (window.game.entered.includes(entered.toUpperCase())) {
     showMessage("Xa atopada", 0);
     return;
@@ -472,14 +472,14 @@ function enterWord() {
   changeProgress(window.game.current_score);
 }
 
-// Set up button functions.
+// Configurar las funciones de los botones.
 function setUpButtonFunctions() {
   element("button-delete").onclick = removeLetterEntry;
   element("button-shuffle").onclick = shuffleScreenKeys;
   element("button-enter").onclick = enterWord;
 }
 
-// Blur or unblur background elements.
+// Desenfocar o enfocar elementos de fondo.
 function setBlur(make_blurry) {
   window.game.popup_active = make_blurry;
   if (make_blurry) {
@@ -491,11 +491,11 @@ function setBlur(make_blurry) {
   }
 }
 
-// Set up ranking in the progress popup.
+// Configurar la clasificación en la ventana emergente de progreso.
 function setUpProgressPopup() {
   let ranking = element("progress-popup-ranking");
   let max_score = window.game.total_score;
-  ranking.textContent = ""; // clear children.
+  ranking.textContent = ""; // Borra subyacentes
   for (i of Array(LEVEL_PERCENTS.length)
     .fill()
     .map((x, i) => i)) {
@@ -520,7 +520,7 @@ function setUpProgressPopup() {
   }
 }
 
-// Show progress popup.
+// Mostrar ventana emergente de progreso.
 function showProgressPopup() {
   element("progress-popup").classList.remove("hidden");
   element("popup-click-bg").classList.remove("hidden");
@@ -528,14 +528,14 @@ function showProgressPopup() {
   setBlur(true);
 }
 
-// Hide progress popup.
+// Ocultar ventana emergente de progreso.
 function hideProgressPopup() {
   element("popup-click-bg").classList.add("hidden");
   element("progress-popup").classList.add("hidden");
   setBlur(false);
 }
 
-// Set up about popup.
+// Configurar la ventana emergente.
 function setUpAboutPopup() {
   if (hmm()) {
     element("popup-content-text-hmm").textContent = " with a special exception once a year";
@@ -547,7 +547,7 @@ function setUpAboutPopup() {
   }
 }
 
-// Show about popup.
+// Mostrar la ventana emergente.
 function showAboutPopup() {
   element("about-popup").classList.remove("hidden");
   element("popup-click-bg").classList.remove("hidden");
@@ -555,23 +555,23 @@ function showAboutPopup() {
   setBlur(true);
 }
 
-// Hide about popup.
+// Ocultar la ventana emergente.
 function hideAboutPopup() {
   element("popup-click-bg").classList.add("hidden");
   element("about-popup").classList.add("hidden");
   setBlur(false);
 }
 
-// Set up prev popup.
+// Configurar la ventana emergente anterior.
 function setUpPrevPopup() {
-  // Get yesterday's entered words, if they are present.
+  // Cargar las palabras de ayer, si existen.
   let prev_entered_array = getCookie(-1);
   let prev_entered = new Set(prev_entered_array);
   if (prev_entered.size != 0) {
     element("popup-content-text-entered").classList.remove("hidden");
   }
 
-  // Show pangram.
+  // Muestra el pangrama.
   let prev_pangram = getTargetPangram(window.game.data, -1);
   let prev_pangram_set = new Set(prev_pangram);
   let prev_pangram_array = Array.from(prev_pangram_set);
@@ -590,7 +590,7 @@ function setUpPrevPopup() {
     prev_letters_container.appendChild(elem);
   }
 
-  // Set up total words and points.
+  // Configurar el total de palabras y puntos.
   let prev_words = getWords(window.game.data, prev_pangram);
   prev_words.sort((a, b) =>
     a.localeCompare(b, undefined, { sensitivity: "base" })
@@ -599,7 +599,7 @@ function setUpPrevPopup() {
   let prev_points = getTotalScore(window.game.data, prev_pangram);
   element("prev-stats-points").textContent = prev_points;
 
-  // Set up found words and points, if present.
+  // Configurar palabras y puntos encontrados, si existen.
   if (prev_entered_array.length > 0) {
     element("prev-stats-words-found").textContent =
       prev_entered_array.length + " de ";
@@ -607,9 +607,9 @@ function setUpPrevPopup() {
       getArrayScore(prev_entered_array) + " de ";
   }
 
-  // Show words.
+  // Mostrar las palabras.
   let prev_words_container = element("prev-words-container");
-  prev_words_container.textContent = ""; // clears content.
+  prev_words_container.textContent = ""; // borra el contenido.
   for (word of prev_words) {
     let elem = document.createElement("a");
     elem.classList.add("prev-entered-word");
@@ -627,7 +627,7 @@ function setUpPrevPopup() {
   }
 }
 
-// Show prev popup.
+// Mostrar ventana emergente anterior.
 function showPrevPopup() {
   element("prev-popup").classList.remove("hidden");
   element("popup-click-bg").classList.remove("hidden");
@@ -635,14 +635,14 @@ function showPrevPopup() {
   setBlur(true);
 }
 
-// Hide prev popup.
+// Ocultar ventana emergente anterior.
 function hidePrevPopup() {
   element("popup-click-bg").classList.add("hidden");
   element("prev-popup").classList.add("hidden");
   setBlur(false);
 }
 
-// Show about popup.
+// Mostrar ventana emergente haceca de.
 function showResetPopup() {
   element("reset-popup").classList.remove("hidden");
   element("popup-click-bg").classList.remove("hidden");
@@ -650,14 +650,14 @@ function showResetPopup() {
   setBlur(true);
 }
 
-// Hide about popup.
+// Ocultar ventana emergente haceca de..
 function hideResetPopup() {
   element("popup-click-bg").classList.add("hidden");
   element("reset-popup").classList.add("hidden");
   setBlur(false);
 }
 
-// Set up victory popup.
+// Configurar ventana emergente de victoria.
 function setUpCountdown(elem) {
   let target = getDateWithOffset(1);
   let countdown_interval = setInterval(function () {
@@ -680,12 +680,12 @@ function setUpCountdown(elem) {
   }, 1000);
 }
 
-// Set up return popup.
+// Configurar la ventana emergente cuenta atras
 function setUpReturnPopup() {
   setUpCountdown("return-countdown-span");
 }
 
-// Show return popup.
+// Mostrar ventana emergente de retorno.
 function showReturnPopup() {
   element("return-popup").classList.remove("hidden");
   element("popup-click-bg").classList.remove("hidden");
@@ -696,19 +696,19 @@ function showReturnPopup() {
   setBlur(true);
 }
 
-// Hide return popup.
+// Ocultar ventana emergente de retorno.
 function hideReturnPopup() {
   element("popup-click-bg").classList.add("hidden");
   element("return-popup").classList.add("hidden");
   setBlur(false);
 }
 
-// Set up victory popup.
+// Configurar ventana emergente de victoria.
 function setUpVictoryPopup() {
   setUpCountdown("victory-countdown-span");
 }
 
-// Show victory popup.
+// Mostrar ventana emergente de victoria.
 function showVictoryPopup() {
   element("victory-popup").classList.remove("hidden");
   element("popup-click-bg").classList.remove("hidden");
@@ -719,21 +719,21 @@ function showVictoryPopup() {
   window.game.show_victory_popup = false;
 }
 
-// Hide victory popup.
+// Ocultar ventana emergente de victoria.
 function hideVictoryPopup() {
   element("popup-click-bg").classList.add("hidden");
   element("victory-popup").classList.add("hidden");
   setBlur(false);
 }
 
-// Set up all popup.
+// Configurar todas las ventanas emergentes.
 function setUpAllPopup() {
   setUpCountdown("all-countdown-span");
   element("all-words").textContent = window.game.words.length + " words";
   element("all-points").textContent = window.game.total_score + " points";
 }
 
-// Show all popup.
+// Mostrar todas las ventanas emergentes.
 function showAllPopup() {
   element("all-popup").classList.remove("hidden");
   element("popup-click-bg").classList.remove("hidden");
@@ -742,14 +742,14 @@ function showAllPopup() {
   window.game.show_all_popup = false;
 }
 
-// Hide all popup.
+// Ocultar todas las ventanas emergentes.
 function hideAllPopup() {
   element("popup-click-bg").classList.add("hidden");
   element("all-popup").classList.add("hidden");
   setBlur(false);
 }
 
-// Toggle dark mode.
+// Alternar modo oscuro.
 function toggleDarkMode() {
   if (document.body.classList.contains("dark")) {
     document.body.classList.remove("dark");
@@ -762,7 +762,7 @@ function toggleDarkMode() {
   }
 }
 
-// Switch dark mode.
+// Cambia a modo oscuro.
 function switchDarkMode(param) {
   if (param == "light") {
     document.body.classList.remove("dark");
@@ -775,7 +775,7 @@ function switchDarkMode(param) {
   }
 }
 
-// Doot
+// Debug de final
 function doot() {
   console.log("doot");
 }

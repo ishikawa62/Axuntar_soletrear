@@ -256,7 +256,7 @@ draft: false
 
     var returnPopupNotShownYet = true;
 
-    // Prevent backspace from navigating page.
+    // Evitar el retroceso de la página.
     window.onkeydown = function (e) {
       if (e.keyCode == 8 && e.target == document.body)
         e.preventDefault();
@@ -267,7 +267,7 @@ draft: false
     Papa.parse("data/words.csv?3", {
       download: true,
       complete: function (result) {
-        let data = result.data.flat(); // unpack result array.
+        let data = result.data.flat(); // descomprimir la matriz de resultados.
         newGame(data);
       },
     });

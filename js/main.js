@@ -1,32 +1,32 @@
-// Get entry container.
+// Pillar contenedor de entrada.
 function element(el) {
   return document.getElementById(el);
 }
 
-// Reset cookie and create new game.
+// Restablece la cookie y crea un nuevo juego.
 function resetGame() {
   deleteAllCookies();
   newGame(window.game.data);
   hideResetPopup();
 }
 
-// Generate new game given data and a seed.
+// Generar nuevos datos del juego.
 function newGame(data) {
   window.game = new Object();
-  window.game.data = data; // all words.
-  window.game.pangram = getTargetPangram(window.game.data); // the chosen pangram.
-  window.game.current_score = 0; // current score.
+  window.game.data = data; // todas las palabras.
+  window.game.pangram = getTargetPangram(window.game.data); // selecciona el pangrama.
+  window.game.current_score = 0; // marcador actual.
   window.game.total_score = getTotalScore(
     window.game.data,
     window.game.pangram
-  ); // total score that can be obtained.
-  window.game.words = getWords(window.game.data, window.game.pangram); // valid words that can be entered into the puzzle.
-  window.game.entered = new Array(); // words that have been entered into the puzzle.
-  window.game.popup_active = false; // flag to indicate if popup is active.
-  window.game.show_all_popup = true; // flag to indicate whether we should show all popup.
-  window.game.show_victory_popup = true; // flag to indicate whether we should show victory popup.
+  ); // Puntuacion posible total.
+  window.game.words = getWords(window.game.data, window.game.pangram); // palabras válidas que se pueden introducir.
+  window.game.entered = new Array(); // palabras que se han introducido.
+  window.game.popup_active = false; // idicador de emergente activa.
+  window.game.show_all_popup = true; // idicador para indicar si se muestra la emergente.
+  window.game.show_victory_popup = true; // indicador para indicar si se muestra la emergente de victoria.
 
-  changeProgress(0); // reset progress bar to 0.
+  changeProgress(0); // pone a cero la barra de progreso
   addWordsToEntered();
   setUpDropdown();
   setUpScreenKeys(window.game.pangram, true);
@@ -45,14 +45,14 @@ function newGame(data) {
   }
 }
 
-// Test if a key is a letter.
+// Comprueba que todo son letras (falta la Ñ).
 function isLetter(key) {
   return (
     key.length == 1 && "ABCDEFGHIJKLMNOPQRSTUVWXYZ".includes(key.toUpperCase())
   );
 }
 
-// Get today's date with HH/MM/SS blanked out, plus some offset of days.
+// Obtener la fecha de hoy con HH/MM/SS en blanco, más algunos días.
 function getDateWithOffset(offset = 0) {
   let today = new Date();
   today.setHours(0);
@@ -63,15 +63,15 @@ function getDateWithOffset(offset = 0) {
   return new Date(tomorrow);
 }
 
-// Get the number of days between a provided date (defaulting to today) and January 1,
-// 1970, taking an optional number of days as an offset.
+// Obtener la cantidad de días entre una fecha proporcionada (por defecto, hoy) y el 1 de enero.
+// 1970, añadiendo un número opcional de días 
 function getDayNumber(offset = 0) {
   let d = getDateWithOffset(offset);
   let DAYS_TO_MILLISECONDS = 24 * 60 * 60 * 1000;
   return Math.floor(d.getTime() / DAYS_TO_MILLISECONDS);
 }
 
-// Save entered words to cookie.
+// Guardar las palabras acertadas en la cookie.
 function setCookie() {
   let entered_words = window.game.entered.join("|");
   document.cookie =
@@ -82,7 +82,7 @@ function setCookie() {
     getDateWithOffset(2).toUTCString();
 }
 
-// Load entered words from cookie, with an offset to specify which day.
+// Cargue las palabras guardadas en la cookie, con un desplazamiento para especificar qué día.
 function getCookie(offset = 0) {
   let raw_cookie = document.cookie.split(";");
   if (document.cookie.length == 0) {
@@ -98,7 +98,7 @@ function getCookie(offset = 0) {
   return new Array();
 }
 
-// Save dark mode cookie.
+// Guardar cookie de modo oscuro.
 function setDarkCookie() {
   document.cookie =
     "!dark-entered=" +
@@ -107,7 +107,7 @@ function setDarkCookie() {
     getDateWithOffset(365).toUTCString();
 }
 
-// Load dark mode cookie.
+// Cargar la cookie de modo oscuro.
 function getDarkCookie() {
   let raw_cookie = document.cookie.split(";");
   if (document.cookie.length == 0) {
@@ -122,7 +122,7 @@ function getDarkCookie() {
   }
 }
 
-// Delete all cookies.
+// Eliminar todas las cookies.
 function deleteAllCookies() {
   var cookies = document.cookie.split(";");
 
