@@ -691,8 +691,8 @@ function showReturnPopup() {
   element("popup-click-bg").classList.remove("hidden");
   element("popup-click-bg").onclick = hideReturnPopup;
   element("return-rank").textContent = LEVEL_NAMES[getRankNumber(window.game.current_score)];
-  element("return-words").textContent = window.game.entered.length + (window.game.entered.length == 1 ? " word" : " words");
-  element("return-points").textContent = window.game.current_score + (window.game.current_score == 1 ? " point" : " points");
+  element("return-words").textContent = window.game.entered.length + (window.game.entered.length == 1 ? " palabra" : " palabras");
+  element("return-points").textContent = window.game.current_score + (window.game.current_score == 1 ? " Punto" : " puntos");
   setBlur(true);
 }
 
