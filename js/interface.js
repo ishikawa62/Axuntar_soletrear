@@ -1,28 +1,28 @@
 // Define variables for ranking.
 let LEVEL_PERCENTS = [0.7, 0.55, 0.4, 0.25, 0.2, 0.15, 0.1, 0.05, 0];
 let LEVEL_NAMES = [
-  "Genio",
+  "Xenial",
   "Excepcional",
   "Fabuloso",
   "Magnífico",
-  "Muy bien",
-  "Bien",
-  "Mejorando",
-  "Novato",
+  "Muito ben",
+  "Ben",
+  "Mellorando",
   "Principiante",
+  "Xurdindo",
 ];
 
 if (hmm()) {
   LEVEL_NAMES = [
-    "!!!",
-    "Chulísimo",
-    "Asombroso",
-    "Encantador",
-    "Fantástico",
-    "Talentoso",
-    "Intrépido ",
-    "Mejorando",
+    "Xenial",
+    "Excepcional",
+    "Fabuloso",
+    "Magnífico",
+    "Muito ben",
+    "Ben",
+    "Mellorando ",
     "Principiante",
+    "Xurdindo",
   ];
 }
 
