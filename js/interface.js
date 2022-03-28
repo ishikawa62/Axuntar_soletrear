@@ -45,7 +45,7 @@ function getProgressNextText(progress) {
   if (rank != 0) {
     let next_score = Math.floor(maximum * LEVEL_PERCENTS[rank - 1]);
     let diff = next_score - progress;
-    next_text = diff + " to " + LEVEL_NAMES[rank - 1];
+    next_text = diff + " pa " + LEVEL_NAMES[rank - 1];
   }
 
   element("progress-next").textContent = next_text;
@@ -182,7 +182,7 @@ function toggleEnteredDropdown() {
     let elem = document.createElement("span");
     elem.classList.add("entered-word-number");
     elem.textContent =
-      "Encontrache " +
+      "Atopache " +
       window.game.entered.length +
       (window.game.entered.length == 1 ? " palabra" : " palabras");
     entered_words.insertBefore(elem, entered_words.firstChild);
@@ -674,7 +674,7 @@ function setUpCountdown(elem) {
     if (dt < 0) {
       clearInterval(countdown_interval);
       document.getElementById(elem).textContent =
-        "a sec— actually, it's midnight! Refresh the page";
+        "un seg— ahora, e medianoite! Novo xogo";
       location.reload();
     }
   }, 1000);
