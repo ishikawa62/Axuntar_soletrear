@@ -713,8 +713,8 @@ function showVictoryPopup() {
   element("victory-popup").classList.remove("hidden");
   element("popup-click-bg").classList.remove("hidden");
   element("popup-click-bg").onclick = hideVictoryPopup;
-  element("victory-words").textContent = window.game.entered.length + " words";
-  element("victory-points").textContent = window.game.current_score + " points";
+  element("victory-words").textContent = window.game.entered.length + " palabras";
+  element("victory-points").textContent = window.game.current_score + " puntos";
   setBlur(true);
   window.game.show_victory_popup = false;
 }
@@ -729,8 +729,8 @@ function hideVictoryPopup() {
 // Configurar todas las ventanas emergentes.
 function setUpAllPopup() {
   setUpCountdown("all-countdown-span");
-  element("all-words").textContent = window.game.words.length + " words";
-  element("all-points").textContent = window.game.total_score + " points";
+  element("all-words").textContent = window.game.words.length + " palabras";
+  element("all-points").textContent = window.game.total_score + " puntos";
 }
 
 // Mostrar todas las ventanas emergentes.
