@@ -775,7 +775,7 @@ function switchDarkMode(param) {
   }
 }
 
-// Debug de final
+// Debug de final por comprobar el ciclo
 function doot() {
   console.log("doot");
 }
