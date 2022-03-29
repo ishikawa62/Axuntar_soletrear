@@ -505,7 +505,7 @@ function setUpProgressPopup() {
       LEVEL_NAMES[i].substring(1) +
       " (" +
       Math.floor(LEVEL_PERCENTS[i] * max_score) +
-      " points)";
+      " puntos)";
       let boldy = document.createElement("b");
       boldy.textContent = LEVEL_NAMES[i].substring(0,1);
       elem.insertBefore(boldy, elem.firstChild);
@@ -514,7 +514,7 @@ function setUpProgressPopup() {
       LEVEL_NAMES[i] +
       " (" +
       Math.floor(LEVEL_PERCENTS[i] * max_score) +
-      " points)";
+      " puntos)";
     }
     ranking.insertBefore(elem, ranking.firstChild);
   }
