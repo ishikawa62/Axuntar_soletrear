@@ -158,7 +158,7 @@ function setUpDropdown() {
   let entered_words = element("entered-words");
 
   if (window.game.entered.length == 0) {
-    entered_words.textContent = "Your words...";
+    entered_words.textContent = "Aquí verás as palabras que atopes...";
     entered_words.classList.add("entered-words-start");
   }
   let chevron = element("entered-toggle");
@@ -193,7 +193,7 @@ function toggleEnteredDropdown() {
     below_entered.classList.remove("below-entered-container-hidden");
     populateEnteredWords(window.game.entered);
     if (window.game.entered.length == 0) {
-      entered_words.textContent = "Your words...";
+      entered_words.textContent = "Aquí verás as palabras que atopes...";
       entered_words.classList.add("entered-words-start");
     }
   }
