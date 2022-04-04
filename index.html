@@ -31,11 +31,11 @@ draft: false
 
   <header id="header">
     <div>
-      <h1>Axuntar - Soletrear</h1>
+      <h1>Axuntar - Soletreando</h1>
       <h2>
         <a href="#" onclick="showAboutPopup();return false;">como xogar</a> |
         <a href="#" onclick="showPrevPopup();return false;">onte</a> |
-        <a href="#" onclick="showResetPopup();return false;">limpia</a> |
+        <a href="#" onclick="showResetPopup();return false;">limpa</a> |
         <a id="toggle-dark" href="#" onclick="toggleDarkMode();return false;">noite</a>
       </h2>
     </div>
@@ -140,7 +140,7 @@ draft: false
     <div class="popup-content">
       <div class="popup-heading">Puntuación</div>
       <div class="popup-content-text">
-        <p>Os puntos requeridos pa cada tramo son porcentaxes fixos dos máximos puntos pa o xogo .</p>
+        <p>Os puntos requeridos pra cada tramo son porcentaxes fixas dos máximos puntos pra el xogo .</p>
         <p>Xogo de hoy:</p>
         <p>
           <ul id="progress-popup-ranking"></ul>
@@ -152,12 +152,12 @@ draft: false
 
   <div id="about-popup" class="popup hidden">
     <div class="popup-content">
-      <div class="popup-heading">Como xogar</div>
+      <div class="popup-heading">Cómo xogar</div>
       <div class="popup-content-text">
-        <p>Forma palabras con as letras dos circulos.
+        <p>Forma palabras coas letras dos círculos.
           <ul>
             <li>As palabras deben ter polo menos 4 letras.</li>
-            <li>Requírese a letra do medio.</li>
+            <li>Requírese a letra del medio.</li>
             <li>As letras pódense repetir.</li>
             <li>
               As palabras deben existir nel diccionario de Varela Aenlle<b id="popup-content-text-hmm"></b>.
@@ -167,8 +167,8 @@ draft: false
         <p>As palabras dan puntos.
           <ul>
             <li>As de 4 letras dan 1 punto.</li>
-            <li>As de 5 o más dan un punto por cada letra.</li>
-            <li>Os pangramas son palabras que usan as 7 letras y dan 7 puntos extra. 
+            <li>As de 5 ou máis dan un punto por cada letra.</li>
+            <li>Os pangramas son palabras que usan as 7 letras e dan 7 puntos extra. 
               En cada xogo hai al menos un pangrama.<b id="explanation-hmm"></b></li>
           </ul>
         </p>
@@ -192,7 +192,7 @@ draft: false
         <div id="prev-words-container"></div>
       </div>
       <p class="popup-content-text">
-        A letra amarela e a requerida. 
+        A letra amarela é a requerida. 
               As palabras resaltadas amarelas son os pangramas. 
       </p>
       <p class="popup-content-text">
@@ -206,13 +206,13 @@ draft: false
 
   <div id="reset-popup" class="popup hidden">
     <div id="popup-content-alt">
-      <h1>Limpiar</h1>
-      <p id="reset-text">Tas seguro de que ques empezar de novo este xogo</p>
+      <h1>Limpar</h1>
+      <p id="reset-text">¿Tás seguro de que ques empezar de novo este xogo?</p>
       <button id="button-no-reset" type="button" class="reset-button" onclick="hideResetPopup()">
         No
       </button>
       <button id="button-reset" type="button" class="reset-button reset-button-action" onclick="resetGame()">
-        Dalle
+        Dálle
       </button>
     </div>
     <span id="popup-exit-alt" onclick="hideResetPopup()"></span>
@@ -233,9 +233,9 @@ draft: false
     <div id="popup-content-alt">
       <img id="victory-img" src="img/victory.svg">
       <h1>Bon traballo!</h1>
-      <p id="victory-text">Chegache a o más alto, con&nbsp;<b id="victory-words"></b>&nbsp;y&nbsp;<b
+      <p id="victory-text">Chegache a lo máis alto, con&nbsp;<b id="victory-words"></b>&nbsp;y&nbsp;<b
           id="victory-points"></b>.</p>
-      <p id="victory-countdown">Volve en&nbsp;<b id="victory-countdown-span">un pouco</b>&nbsp;pa un novo xogo.</p>
+      <p id="victory-countdown">Volve en&nbsp;<b id="victory-countdown-span">un pouco</b>&nbsp;pra un novo xogo.</p>
     </div>
     <span id="popup-exit-alt" onclick="hideVictoryPopup()"></span>
   </div>
@@ -244,9 +244,9 @@ draft: false
     <div id="popup-content-alt">
       <img id="all-img" src="img/fireworks.svg">
       <h1>Espectacular!</h1>
-      <p id="all-text">Atopache as&nbsp;<b id="all-words"></b> que son todas, con valor&nbsp;<b id="all-points"></b>. Incrible!.
+      <p id="all-text">Atopache as&nbsp;<b id="all-words"></b> ou seña todas, e tes&nbsp;<b id="all-points"></b>. Incrible!.
       </p>
-      <p id="all-countdown">Volve en&nbsp;<b id="all-countdown-span">un pouco</b>&nbsp;pa un novo xogo.</p>
+      <p id="all-countdown">Volve en&nbsp;<b id="all-countdown-span">un pouco</b>&nbsp;pra un novo xogo.</p>
     </div>
     <span id="popup-exit-alt" onclick="hideAllPopup()"></span>
   </div>

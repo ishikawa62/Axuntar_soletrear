@@ -9,7 +9,7 @@ let LEVEL_NAMES = [
   "Ben",
   "Mellorando",
   "Principiante",
-  "Xurdindo",
+  "Salindo",
 ];
 
 if (hmm()) {
@@ -22,7 +22,7 @@ if (hmm()) {
     "Ben",
     "Mellorando ",
     "Principiante",
-    "Xurdindo",
+    "Salindo",
   ];
 }
 
@@ -45,7 +45,7 @@ function getProgressNextText(progress) {
   if (rank != 0) {
     let next_score = Math.floor(maximum * LEVEL_PERCENTS[rank - 1]);
     let diff = next_score - progress;
-    next_text = diff + " pa " + LEVEL_NAMES[rank - 1];
+    next_text = diff + " pra " + LEVEL_NAMES[rank - 1];
   }
 
   element("progress-next").textContent = next_text;
