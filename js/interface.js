@@ -8,7 +8,7 @@ let LEVEL_NAMES = [
   "Muito ben",
   "Ben",
   "Mellorando",
-  "Principiante",
+  "Empezando",
   "Salindo",
 ];
 
@@ -21,7 +21,7 @@ if (hmm()) {
     "Muito ben",
     "Ben",
     "Mellorando ",
-    "Principiante",
+    "Empezando",
     "Salindo",
   ];
 }
@@ -433,7 +433,7 @@ function enterWord() {
 
   // Verificar si la letra del medio está presente.
   if (!entered.toUpperCase().includes(required_letter)) {
-    showMessage("Falta a letra do centro", 0);
+    showMessage("Falta a letra del centro", 0);
     return;
   }
 
