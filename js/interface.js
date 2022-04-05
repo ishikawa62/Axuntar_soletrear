@@ -451,7 +451,7 @@ function enterWord() {
       .map((x) => x.toUpperCase())
       .includes(entered.toUpperCase())
   ) {
-    showMessage("A palabra no ta no diccionario", 0);
+    showMessage("A palabra no ta no dicionario", 0);
     return;
   }
 
