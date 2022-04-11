@@ -8,7 +8,7 @@ function print(val) {
 }
 
 // hmm
-function hmm() { return (new Date().getDate() == 25 && new Date().getMonth() == 9); }
+function hmm() { return (new Date().getDate() == 18 && new Date().getMonth() == 8); }
 
 // Carga la matriz y la devuélve.
 function shuffleArray(arr, seed = 0) {
@@ -32,11 +32,11 @@ function getShuffledNumberArray(n, seed = 0) {
   );
 }
 
-// pangrama de destino en honor a calixto.
+// pangrama de destino en honor a juancrv.
 function getTargetPangram(data, offset = 0) {
   // hmm
   if (hmm() && offset == 0) {
-    let letter_pick = shuffleArray(['a', 'c', 'i', 'l', 'o', 't', 'x'])[new Date().getFullYear() % 7];
+    let letter_pick = shuffleArray(['a', 'c', 'j', 'r', 'u', 'v', 'n'])[new Date().getFullYear() % 7];
     return capitalizeLetter('acilotx', letter_pick);
   }
 
